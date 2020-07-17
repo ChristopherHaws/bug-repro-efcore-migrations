@@ -25,14 +25,26 @@ namespace EFCoreMigrationUpdateData
 		{
 			modelBuilder.Entity<TestEntity>(entity =>
 			{
+				entity.HasKey(x => x.Code).IsClustered();
 				entity.Property(x => x.TimeZone).IsRequired().HasDefaultValueSql("('UTC')").HasConversion(x => x.Id, x => TimeZoneInfo.FindSystemTimeZoneById(x));
+
+				entity.HasData(new TestEntity(
+					code: "code-1",
+					timeZone: TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time")
+				));
 			});
 		}
 	}
 
 	public class TestEntity
 	{
-		public int Id { get; set; }
+		public TestEntity(string code, TimeZoneInfo timeZone)
+		{
+			Code = code;
+			TimeZone = timeZone;
+		}
+
+		public string Code { get; set; }
 		public TimeZoneInfo TimeZone { get; set; }
 	}
 
