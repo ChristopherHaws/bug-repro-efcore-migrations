@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{7EFE1FC2-8163-4ACC-BA47-603BA8916D68}"
 	ProjectSection(SolutionItems) = preProject
 		dotnet-tools.json = dotnet-tools.json
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
